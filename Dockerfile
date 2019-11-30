@@ -10,9 +10,10 @@ RUN apk add $BUILDDEP
 RUN pip3 install matrix-synapse
 RUN apk del $BUILDDEP
 RUN apk add $RUNDEP
+ADD entrypoint.sh /entrypoint.sh
 
 EXPOSE 80
 
 STOPSIGNAL SIGTERM
 
-ENTRYPOINT ["/bin/ash"]
+ENTRYPOINT ["/entrypoint.sh"]
